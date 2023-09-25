@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add Extra Meterial UI to project",
+      "factory": "./ng-add/index#ngAdd"
+    },
+    "table-component": {
+      "description": "This schematic generates a table component",
+      "factory": "./table-component/index#tableComponentGenerator",
+      "schema": "./table-component/schema.json",
+      "aliases": ["tc"]
+    }
+  }
+}
