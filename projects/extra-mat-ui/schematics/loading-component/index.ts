@@ -10,12 +10,14 @@ import {
   MergeStrategy,
 } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
-import { TableComponentSchema } from './table-component';
+import { LoadingComponentSchema } from './loading-component';
 import { importModules, moduleFilePath, path } from '../util';
-import { Tree, SchematicContext } from '@angular-devkit/schematics';
+import { SchematicContext, Tree } from '@angular-devkit/schematics';
 import { modules } from './modules';
 
-export function tableComponentGenerator(options: TableComponentSchema): Rule {
+export function loadingComponentGenerator(
+  options: LoadingComponentSchema
+): Rule {
   return (tree: Tree, context: SchematicContext) => {
     importModules(tree, context, moduleFilePath(options.path), modules);
 

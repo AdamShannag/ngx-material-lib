@@ -1,43 +1,10 @@
-import {
-  Rule,
-  Tree,
-  SchematicContext,
-  SchematicsException,
-} from '@angular-devkit/schematics';
-import { applyToUpdateRecorder } from '@schematics/angular/utility/change';
-import { addImportToModule } from '@schematics/angular/utility/ast-utils';
-import * as ts from 'typescript';
+import { Rule, Tree, SchematicContext } from '@angular-devkit/schematics';
+import { importModules } from '../util';
+import { modules } from './modules';
 
 export function ngAdd(): Rule {
   return (tree: Tree, context: SchematicContext) => {
-    context.logger.info('Adding library Modules to the app...');
-
-    const modulePath = '/src/app/app.module.ts';
-    if (!tree.exists(modulePath)) {
-      throw new SchematicsException(`The file ${modulePath} doesn't exists...`);
-    }
-
-    const recorder = tree.beginUpdate(modulePath);
-
-    const text = tree.read(modulePath);
-
-    if (text === null) {
-      throw new SchematicsException(`The file ${modulePath} doesn't exists...`);
-    }
-
-    const source = ts.createSourceFile(
-      modulePath,
-      text.toString(),
-      ts.ScriptTarget.Latest,
-      true
-    );
-
-    applyToUpdateRecorder(
-      recorder,
-      addImportToModule(source, modulePath, 'ExtraMatUiModule', 'extra-mat-ui')
-    );
-
-    tree.commitUpdate(recorder);
+    importModules(tree, context, '/src/app/app.module.ts', modules);
 
     return tree;
   };

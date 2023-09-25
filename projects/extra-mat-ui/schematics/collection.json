@@ -10,6 +10,18 @@
       "factory": "./table-component/index#tableComponentGenerator",
       "schema": "./table-component/schema.json",
       "aliases": ["tc"]
+    },
+    "loading-component": {
+      "description": "This schematic generates a loading component",
+      "factory": "./loading-component/index#loadingComponentGenerator",
+      "schema": "./loading-component/schema.json",
+      "aliases": ["lc"]
+    },
+    "messages-component": {
+      "description": "This schematic generates a messages component",
+      "factory": "./messages-component/index#messagesComponentGenerator",
+      "schema": "./messages-component/schema.json",
+      "aliases": ["mc"]
     }
   }
 }

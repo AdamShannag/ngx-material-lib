@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "messages-component",
+  "title": "Extra Material UI Messages Component Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The name of the component",
+      "type": "string"
+    },
+    "path": {
+      "description": "The path where the component should be created",
+      "type": "string",
+      "format": "path",
+      "x-prompt": "Path to component?",
+      "default": "src/app"
+    }
+  },
+  "required": []
+}
