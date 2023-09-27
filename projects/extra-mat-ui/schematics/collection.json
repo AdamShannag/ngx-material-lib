@@ -22,6 +22,12 @@
       "factory": "./messages-component/index#messagesComponentGenerator",
       "schema": "./messages-component/schema.json",
       "aliases": ["mc"]
+    },
+    "keycloak": {
+      "description": "This schematic initializes keycloak and adds a keycloak gaurd for the currrent application",
+      "factory": "./keycloak/index#keycloakGenerator",
+      "schema": "./keycloak/schema.json",
+      "aliases": ["kc"]
     }
   }
 }
