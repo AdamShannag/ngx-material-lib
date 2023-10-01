@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add Prime Schematics to project",
+      "factory": "./ng-add/index#ngAdd"
+    },
+    "table-component": {
+      "description": "This schematic generates a table component",
+      "factory": "./table-component/index#tableComponentGenerator",
+      "schema": "./table-component/schema.json",
+      "aliases": ["tc"]
+    },
+    "loading-component": {
+      "description": "This schematic generates a loading component",
+      "factory": "./loading-component/index#loadingComponentGenerator",
+      "schema": "./loading-component/schema.json",
+      "aliases": ["lc"]
+    },
+    "keycloak": {
+      "description": "This schematic initializes keycloak and adds a keycloak gaurd for the currrent application",
+      "factory": "./keycloak/index#keycloakGenerator",
+      "schema": "./keycloak/schema.json",
+      "aliases": ["kc"]
+    }
+  }
+}

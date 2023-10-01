@@ -9,6 +9,9 @@
     "paths": {
       "extra-mat-ui": [
         "dist/extra-mat-ui"
+      ],
+      "prime-x": [
+        "dist/prime-x"
       ]
     },
     "noImplicitOverride": true,

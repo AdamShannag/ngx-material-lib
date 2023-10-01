@@ -1,0 +1,29 @@
+<p-table [value]="data" [lazy]="true" (onLazyLoad)="loadData($event)" dataKey="id" [tableStyle]="{'min-width': '75rem'}"
+  [selection]="selectedData" (selectionChange)="onSelectionChange($event)" [selectAll]="selectAll"
+  (selectAllChange)="onSelectAllChange($event)" [paginator]="true" [rows]="5" [totalRecords]="totalRecords"
+  [loading]="loading" [globalFilterFields]="['name','country.name', 'company', 'representative.name']">
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 4rem"></th>
+
+      <th *ngFor="let header of headers" pSortableColumn="header.key">{{header.label}}<p-sortIcon
+          [field]="header.key"></p-sortIcon></th>
+    </tr>
+    <tr>
+      <th style="width: 4rem">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th *ngFor="let header of headers">
+        <p-columnFilter type="text" [field]="header.key"></p-columnFilter>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr>
+      <td>
+        <p-tableCheckbox [value]="data"></p-tableCheckbox>
+      </td>
+      <td *ngFor="let header of headers">{{data[header.key]}}</td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,56 @@
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TableLazyLoadEvent } from 'primeng/table';
+
+@Component({
+  selector: '<%= dasherize(name) %>',
+  templateUrl: './<%= dasherize(name) %>.component.html',
+  styleUrls: ['./<%= dasherize(name) %>.component.scss'],
+})
+export class <%= classify(name) %>Component {
+  headers: { key: string; label: string }[] = [];
+  data: any[] = [];
+  totalRecords!: number;
+
+  loading!: boolean;
+
+  selectAll: boolean = false;
+
+  selectedData!: any[];
+
+  constructor(private route: ActivatedRoute) {
+    this.headers = this.route.snapshot.data['tableData'].headers;
+    this.data = this.route.snapshot.data['tableData'].data;
+  }
+
+  ngOnInit() {
+    this.loading = true;
+  }
+
+  loadData(event: TableLazyLoadEvent) {
+    this.loading = true;
+
+    // load paged data from service
+    // set this.data and this.totalRecords
+
+    this.loading = false;
+  }
+
+  onSelectionChange(value = []) {
+    this.selectAll = value.length === this.totalRecords;
+    this.selectedData = value;
+  }
+
+  onSelectAllChange(event: any) {
+    const checked = event.checked;
+
+    if (checked) {
+      // fetch all data from service then set the response to this.selectedData and selectAll to true
+      // this.selectedData = this.myService.get();
+      this.selectAll = true;
+    } else {
+      this.selectedData = [];
+      this.selectAll = false;
+    }
+  }
+}
