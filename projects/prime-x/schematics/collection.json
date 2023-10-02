@@ -22,6 +22,12 @@
       "factory": "./keycloak/index#keycloakGenerator",
       "schema": "./keycloak/schema.json",
       "aliases": ["kc"]
+    },
+    "layout": {
+      "description": "This schematic generates a Layout module with all its related compoenents",
+      "factory": "./layout/index#layoutGenerator",
+      "schema": "./layout/schema.json",
+      "aliases": ["l"]
     }
   }
 }

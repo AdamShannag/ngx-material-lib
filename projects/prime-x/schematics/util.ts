@@ -3,7 +3,10 @@ import {
   SchematicsException,
   SchematicContext,
 } from '@angular-devkit/schematics';
-import { applyToUpdateRecorder } from '@schematics/angular/utility/change';
+import {
+  applyToUpdateRecorder,
+  Change,
+} from '@schematics/angular/utility/change';
 import {
   addImportToModule,
   addDeclarationToModule,
@@ -11,6 +14,7 @@ import {
 import { strings, normalize, split } from '@angular-devkit/core';
 import * as ts from 'typescript';
 import { Module } from './module';
+import { insertImport } from '@schematics/angular/utility/ast-utils';
 
 export const path = (path: string, name: string): string => {
   return normalize(`/${path}/${strings.dasherize(name)}`);
@@ -103,6 +107,41 @@ export const addDeclarationsToModule = (
       )
     )
   );
+
+  tree.commitUpdate(recorder);
+};
+
+export const importFiles = (
+  tree: Tree,
+  filePath: string,
+  modules: Module[]
+) => {
+  if (!tree.exists(filePath)) {
+    throw new SchematicsException(`The file ${filePath} doesn't exists...`);
+  }
+
+  const recorder = tree.beginUpdate(filePath);
+
+  const text = tree.read(filePath);
+
+  if (text === null) {
+    throw new SchematicsException(`The file ${filePath} doesn't exists...`);
+  }
+
+  const source = ts.createSourceFile(
+    filePath,
+    text.toString(),
+    ts.ScriptTarget.Latest,
+    true
+  );
+
+  const changes: Change[] = [];
+
+  modules.forEach((m) =>
+    changes.push(insertImport(source, filePath, m.classifiedName, m.importPath))
+  );
+
+  applyToUpdateRecorder(recorder, changes);
 
   tree.commitUpdate(recorder);
 };
