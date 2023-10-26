@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "error-component",
+  "title": "Prime Schematics Error Component Schema",
+  "type": "object",
+  "properties": {
+    "path": {
+      "description": "The path where the component should be created",
+      "type": "string",
+      "format": "path",
+      "x-prompt": "Path to component?",
+      "default": "src/app/pages"
+    }
+  },
+  "required": []
+}

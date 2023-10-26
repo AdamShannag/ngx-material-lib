@@ -1,0 +1,34 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
+import { CreateComponent } from './create/create.component';
+import { ViewComponent } from './view/view.component';
+import { EditComponent } from './edit/edit.component';
+import { CrudResolver, EditResolver } from 'prime-x';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: <%= classify(name) %>Component,
+    resolve: {
+      tableData: CrudResolver,
+    },
+    children: [
+      { path: '', component: ViewComponent },
+      { path: 'create', component: CreateComponent },
+      {
+        path: 'edit/:id',
+        component: EditComponent,
+        resolve: {
+          data: EditResolver,
+        },
+      },
+    ],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class <%= classify(name) %>RoutingModule {}

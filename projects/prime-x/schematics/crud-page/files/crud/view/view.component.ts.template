@@ -1,0 +1,36 @@
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AbstractCrudPage, CrudPage } from 'prime-x';
+import { TableLazyLoadEvent } from 'primeng/table';
+
+@Component({
+  templateUrl: './view.component.html',
+})
+export class ViewComponent extends AbstractCrudPage implements CrudPage {
+  @ViewChild('filter') override filter!: ElementRef;
+
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.headers = this.route.snapshot.data['tableData'].headers;
+    this.data = this.route.snapshot.data['tableData'].data;
+    this.totalRecords = this.route.snapshot.data['tableData'].totalRecords;
+  }
+  loadData(event: TableLazyLoadEvent): void {
+    throw new Error('Method not implemented.');
+  }
+  deleteRecord(record: any): void {
+    throw new Error('Method not implemented.');
+  }
+  editRecord(record: any): void {
+    throw new Error('Method not implemented.');
+  }
+  createRecord(): void {
+    throw new Error('Method not implemented.');
+  }
+  confirmDeleteSelected(confirm: boolean): void {
+    throw new Error('Method not implemented.');
+  }
+  confirmDelete(confirm: boolean): void {
+    throw new Error('Method not implemented.');
+  }
+}

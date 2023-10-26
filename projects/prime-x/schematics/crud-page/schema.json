@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "crud-page",
+  "title": "Prime Schematics Crud Page Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The name of the crud page component",
+      "type": "string"
+    },
+    "path": {
+      "description": "The path where the crud page component should be created",
+      "type": "string",
+      "format": "path",
+      "x-prompt": "Path to component?",
+      "default": "src/app"
+    }
+  },
+  "required": ["name"]
+}

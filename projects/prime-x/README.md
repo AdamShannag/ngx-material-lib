@@ -1,24 +1,124 @@
-# PrimeX
+# @adam.shannag/prime-x
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+@adam.shannag/prime-x is a library of schematics designed to simplify the development of Angular applications with PrimeNG components and streamlined integration with Keycloak for Identity and Access Management (IAM).
 
-## Code scaffolding
+## Table of Contents
 
-Run `ng generate component component-name --project prime-x` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project prime-x`.
-> Note: Don't forget to add `--project prime-x` or else it will be added to the default project in your `angular.json` file. 
+- [Installation](#installation)
+- [Usage](#usage)
+- [Schematics](#schematics)
+  - [Table Component](#table-component)
+  - [Loading Component](#loading-component)
+  - [Keycloak Initialization](#keycloak-initialization)
+  - [Layout Module](#layout-module)
+  - [CRUD Page Component](#crud-page-component)
+  - [Error Component](#error-component)
+- [Contributing](#contributing)
+- [License](#license)
+- [Source Code](#source-code)
 
-## Build
+## Installation
 
-Run `ng build prime-x` to build the project. The build artifacts will be stored in the `dist/` directory.
+To get started with @adam.shannag/prime-x, you need to install it in your Angular project:
 
-## Publishing
+```
+ng add @adam.shannag/prime-x
+```
 
-After building your library with `ng build prime-x`, go to the dist folder `cd dist/prime-x` and run `npm publish`.
+## Usage
 
-## Running unit tests
+### Generating Components
 
-Run `ng test prime-x` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can generate various components using the schematics along with their shortcuts.
 
-## Further help
+#### Table Component
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This schematic generates a table component.
+
+```
+ng generate @adam.shannag/prime-x:table-component my-table
+```
+
+Shortcut:
+
+```
+ng generate @adam.shannag/prime-x:tc my-table
+```
+
+#### Loading Component
+
+This schematic generates a loading component.
+
+```
+ng generate @adam.shannag/prime-x:loading-component my-loading
+```
+
+Shortcut:
+
+```
+ng generate @adam.shannag/prime-x:lc my-loading
+```
+
+#### Keycloak Initialization
+
+This schematic initializes Keycloak and adds a Keycloak guard for the current application.
+
+```
+ng generate @adam.shannag/prime-x:keycloak
+```
+
+Shortcut:
+
+```
+ng generate @adam.shannag/prime-x:kc
+```
+
+#### Layout Module
+
+This schematic generates a Layout module with all its related components.
+
+```
+ng generate @adam.shannag/prime-x:layout my-layout
+```
+
+Shortcut:
+
+```
+ng generate @adam.shannag/prime-x:l my-layout
+```
+
+#### CRUD Page Component
+
+This schematic generates a CRUD page component with all its related components.
+
+```
+ng generate @adam.shannag/prime-x:crud-page my-crud-page
+```
+
+Shortcut:
+
+```
+ng generate @adam.shannag/prime-x:cp my-crud-page
+```
+
+#### Error Component
+
+This schematic generates an error component.
+
+```
+ng generate @adam.shannag/prime-x:error-component my-error
+```
+
+Shortcut:
+
+```
+ng generate @adam.shannag/prime-x:ec my-error
+```
+
+## License
+
+@adam.shannag/prime-x is licensed under the [MIT License](LICENSE.md).
+
+## Source Code
+
+The source code for @adam.shannag/prime-x can be found on [GitHub](https://github.com/AdamShannag/ngx-material-lib/tree/master/projects/prime-x).

@@ -1,0 +1,15 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <div>
+        <button pButton pRipple type=" button" icon="pi pi-arrow-left"
+          class="p-button-rounded p-button-secondary p-button-text" routerLink="../../"></button>
+        <h4>Edit Page</h4>
+      </div>
+
+      <p>This is your empty edit page template to start building the edit form.</p>
+      <p>Recived some data:</p>
+      <p>{{data | json}}</p>
+    </div>
+  </div>
+</div>

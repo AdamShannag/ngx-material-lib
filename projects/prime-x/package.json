@@ -1,9 +1,6 @@
 {
-  "name": "prime-x",
-  "version": "0.0.10",
-  "publishConfig": {
-    "registry": "http://localhost:4873"
-  },
+  "name": "@adam.shannag/prime-x",
+  "version": "0.0.2",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "postbuild": "copyfiles schematics/collection.json schematics/*/schema.json schematics/*/files/** ../../dist/prime-x"
@@ -14,7 +11,8 @@
   "schematics": "./schematics/collection.json",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
-    "@angular/core": "^16.2.0"
+    "@angular/core": "^16.2.0",
+    "primeng": "^16.4.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"

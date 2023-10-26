@@ -1,0 +1,89 @@
+<div class="grid">
+  <div class="col-12">
+
+    <div class="card px-6 py-6">
+      <p-toolbar styleClass="mb-4">
+        <ng-template pTemplate="left">
+          <div class="my-2">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
+              (click)="createRecord()"></button>
+            <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger"
+              (click)="this.deleteRecordsDialog = true;" [disabled]="!selectedData || !selectedData.length"></button>
+          </div>
+        </ng-template>
+      </p-toolbar>
+
+      <p-table #dt [value]="data" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true" [lazy]="true"
+        (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        styleClass="p-datatable-gridlines" [paginator]="true"
+        [globalFilterFields]="['name','country.name','representative.name','status']" [(selection)]="selectedData"
+        selectionMode="multiple" responsiveLayout="scroll">
+        <ng-template pTemplate="caption">
+          <div class="flex justify-content-between flex-column sm:flex-row">
+            <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash"
+              (click)="clear(dt)"></button>
+            <span class="p-input-icon-left mb-2">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" #filter (input)="onGlobalFilter(dt, $event)" placeholder="Search Keyword"
+                class="w-full" />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 3rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th *ngFor="let header of headers" [pSortableColumn]="header.field" style="min-width: 12rem">
+              <div class="flex justify-content-between align-items-center">
+                {{header.header}}
+                <div class="flex justify-content-between align-items-center">
+                  <app-column-filter [header]="header"></app-column-filter>
+                  <p-sortIcon [field]="header.field"></p-sortIcon>
+                </div>
+              </div>
+            </th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-record>
+          <tr>
+            <td>
+              <p-tableCheckbox [value]="record"></p-tableCheckbox>
+            </td>
+            <td *ngFor="let header of headers">
+              {{record[header.field]}}
+            </td>
+            <td>
+              <div class="flex">
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                  (click)="editRecord(record)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                  (click)="deleteRecord(record)"></button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8">No records found.</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="loadingbody">
+          <tr>
+            <td colspan="8">Loading records. Please wait.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+
+    <px-dialog [visibile]="deleteRecordDialog" message="Are you sure you want to delete the selected record?"
+      (dialogEvent)="confirmDelete($event)"></px-dialog>
+
+    <px-dialog [visibile]="deleteRecordsDialog" message="Are you sure you want to delete selected records?"
+      (dialogEvent)="confirmDeleteSelected($event)"></px-dialog>
+
+  </div>
+</div>

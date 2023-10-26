@@ -1,0 +1,13 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <div>
+        <button pButton pRipple type=" button" icon="pi pi-arrow-left"
+          class="p-button-rounded p-button-secondary p-button-text" routerLink="../"></button>
+        <h4>Create Page</h4>
+      </div>
+
+      <p>This is your empty create page template to start building the create form.</p>
+    </div>
+  </div>
+</div>

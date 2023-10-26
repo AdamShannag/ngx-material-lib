@@ -1,0 +1,19 @@
+<p-columnFilter *ngIf="header.type === 'text'" [type]="header.type" [field]="header.field" display="menu"
+  [placeholder]="'Search by ' + header.field"></p-columnFilter>
+
+<p-columnFilter *ngIf="header.type === 'numeric'" [type]="header.type" [field]="header.field"
+  display="menu"></p-columnFilter>
+
+<p-columnFilter *ngIf="header.type === 'date'" [type]="header.type" [field]="header.field" display="menu"
+  placeholder="mm/dd/yyyy"></p-columnFilter>
+
+<p-columnFilter *ngIf="header.type === 'select'" [field]="header.field" matchMode="equals" display="menu">
+  <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+    <p-dropdown [ngModel]="value" [options]="header.options.selectOptions" (onChange)="filter($event.value)"
+      placeholder="Any" [style]="{'min-width': '12rem'}">
+      <ng-template let-option pTemplate="item">
+        <span [class]="'customer-badge status-' + option.value">{{option}}</span>
+      </ng-template>
+    </p-dropdown>
+  </ng-template>
+</p-columnFilter>

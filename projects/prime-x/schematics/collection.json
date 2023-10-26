@@ -28,6 +28,18 @@
       "factory": "./layout/index#layoutGenerator",
       "schema": "./layout/schema.json",
       "aliases": ["l"]
+    },
+    "crud-page": {
+      "description": "This schematic generates a Crud page component with all its related compoenents",
+      "factory": "./crud-page/index#crudPageGenerator",
+      "schema": "./crud-page/schema.json",
+      "aliases": ["cp"]
+    },
+    "error-component": {
+      "description": "This schematic generates an Error component",
+      "factory": "./error-component/index#errorComponentGenerator",
+      "schema": "./error-component/schema.json",
+      "aliases": ["ec"]
     }
   }
 }
