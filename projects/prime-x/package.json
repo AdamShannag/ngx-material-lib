@@ -1,6 +1,6 @@
 {
-  "name": "@adam.shannag/prime-x",
-  "version": "0.0.2",
+  "name": "ngprime-x",
+  "version": "0.0.1",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "postbuild": "copyfiles schematics/collection.json schematics/*/schema.json schematics/*/files/** ../../dist/prime-x"
